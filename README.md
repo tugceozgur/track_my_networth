@@ -1,4 +1,4 @@
-# track_my_networth
+# Track My Net Worth
 Simple app tracks your net worth including crypto assets.
 
 
