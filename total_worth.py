@@ -15,11 +15,10 @@ class NetWorth:
     def calculate_net_worth(self):
         total_worth = 0
 
-        with open('holdings.json', 'r') as f:
-            holdings = json.load(f)
+        with open('crypto_holdings.json', 'r') as f:
+            crypto_holdings = json.load(f)
 
-        for key in holdings:
-            print(total_worth)
-            total_worth += float(CoinWorth.get_coin_price(key))*float(holdings[key])
+        for coin in crypto_holdings:
+            total_worth += float(CoinWorth.get_coin_price(coin))*float(crypto_holdings[coin])
 
         return total_worth
