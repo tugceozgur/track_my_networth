@@ -1,8 +1,9 @@
 import requests
 import json
+import datetime
 
 class CryptoWorth:
-    _base_url = "https://api.coinmarketcap.com/v1/ticker/"
+    _base_url = 'https://api.coinmarketcap.com/v1/ticker/'
 
     @classmethod
     def get_coin_price(self,coin_name):
@@ -33,7 +34,7 @@ class ExchangeCash:
     def to_usd(self):
         cash_worth = 0
 
-        exchange_rates = requests.get("https://api.exchangeratesapi.io/latest?base=USD").json()['rates']
+        exchange_rates = requests.get('https://api.exchangeratesapi.io/latest?base=USD').json()['rates']
 
         #parse cash holdings
         try:
@@ -48,4 +49,15 @@ class ExchangeCash:
 
         return cash_worth
 
-        
+def get_total_worth():
+    return (ExchangeCash.to_usd()+CryptoWorth.calculate_crypto_worth())
+
+def save_total_worth():
+    networth = get_total_worth()
+    current_date = datetime.date.today().strftime("%B %d, %Y")
+
+    with open('networth.txt', 'a+') as f:
+        f.write("{0} {1}\n".format(str(networth), current_date))
+
+    
+    

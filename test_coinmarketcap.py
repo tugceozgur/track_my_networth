@@ -1,4 +1,5 @@
 import unittest
+import total_worth
 from total_worth import CryptoWorth
 # from total_worth import NetWorth
 from total_worth import ExchangeCash
@@ -19,7 +20,10 @@ class Test_TestPrices(unittest.TestCase):
         print("Total Cash Worth in USD: " + str(ExchangeCash.to_usd()))
 
     def test_total_net_worth(self):
-        print("Total worth: " + str(ExchangeCash.to_usd()+CryptoWorth.calculate_crypto_worth()))
+        print("Total worth: " + str(total_worth.get_total_worth()))
+
+    def test_saving_to_txt(self):
+        total_worth.save_total_worth()
 
 
 if __name__ == '__main__':
