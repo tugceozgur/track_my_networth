@@ -56,3 +56,5 @@ now networth.txt should be recorded in the current directory
 
 ### To be added:
 Different stocks and currencies
+
+[![Analytics](https://ga-beacon.appspot.com/UA-41104803-6/networth)](https://github.com/igrigorik/ga-beacon)
