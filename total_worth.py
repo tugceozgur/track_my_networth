@@ -15,8 +15,11 @@ class CryptoWorth:
         crypto_worth = 0
 
         #parse crypto holdings
-        with open('crypto_holdings.json', 'r') as f:
-            crypto_holdings = json.load(f)
+        try:
+            with open('crypto_holdings.json', 'r') as f:
+                crypto_holdings = json.load(f)
+        except:
+            return crypto_worth
 
         #get total crypto worth
         for coin in crypto_holdings:
@@ -33,12 +36,15 @@ class ExchangeCash:
         exchange_rates = requests.get("https://api.exchangeratesapi.io/latest?base=USD").json()['rates']
 
         #parse cash holdings
-        with open('cash_holdings.json', 'r') as f:
-            cash_holdings = json.load(f)
+        try:
+            with open('cash_holdings.json', 'r') as f:
+                cash_holdings = json.load(f)
+        except:
+            return cash_worth
 
         #get total cash worth
         for cash in cash_holdings:
-            cash_worth += float(exchange_rates[cash])*float(cash_holdings[cash])
+            cash_worth += float(cash_holdings[cash])/float(exchange_rates[cash])
 
         return cash_worth
 
