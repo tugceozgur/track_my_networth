@@ -4,12 +4,12 @@ Simple app tracks your net worth including crypto assets.
 ## Installation
 Install requirements by:
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
-Make sure you can run the tests (note python refers to python3)
+Make sure you can run the tests
 ```
-python test_coinmarketcap.py
+python3 test_coinmarketcap.py
 ```
 
 ## Usage
